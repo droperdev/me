@@ -1,0 +1,78 @@
+---
+const { content } = Astro.props;
+---
+
+<div class="mb-16">
+  <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
+    <svg
+      class="mr-3 text-purple-400 w-8 h-8"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      ></path>
+    </svg>
+    {content.sections.experience}
+  </h2>
+  <div class="space-y-6">
+    {
+      content.experience.map((job: any) => (
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-1">{job.role}</h3>
+              <p class="text-purple-300 text-lg font-medium">{job.company}</p>
+            </div>
+            <div class="flex items-center text-slate-400 mt-2 md:mt-0">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span>{job.period}</span>
+            </div>
+          </div>
+          <p class="text-slate-300 mb-4 leading-relaxed">{job.description}</p>
+          <div class="border-t border-purple-500/20 pt-4">
+            <p class="text-purple-300 font-semibold mb-2">
+              {content.sections.projects}:
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {job.projects.map((project: any) => (
+                <span class="flex items-center bg-linear-to-r from-purple-600/20 to-pink-600/20 text-white px-3 py-1 rounded-lg text-sm border border-purple-500/30">
+                  <svg
+                    class="w-4 h-4 mr-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  {project}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

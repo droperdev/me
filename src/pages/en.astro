@@ -1,0 +1,28 @@
+---
+import Hero from "@components/Hero.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import { content } from "../data/content.ts";
+import ContactButtons from "@components/ContactButtons.astro";
+import Skills from "@components/Skills.astro";
+import Experience from "@components/Experience.astro";
+import Education from "@components/Education.astro";
+const lang = "en";
+const data = content[lang];
+---
+
+<Layout title="Pedro Edward Lumbre Cama - Full Stack Developer CV" lang="en">
+  <Header lang={lang} />
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Hero content={data} />
+    <ContactButtons />
+    <Skills content={data} />
+    <Experience content={data} />
+    <Education content={data} />
+    <div
+      class="mt-16 text-center text-slate-400 border-t border-purple-500/20 pt-8"
+    >
+      <p class="text-sm">© 2025 droperdev. {data.rights}</p>
+    </div>
+  </div>
+</Layout>

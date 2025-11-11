@@ -1,0 +1,49 @@
+---
+import { skills } from "../data/content.ts";
+const { content } = Astro.props;
+
+const categoryNames: Record<string, string> = {
+  mobile: "Mobile",
+  frontend: "Frontend",
+  backend: "Backend",
+  tools: "Tools & Cloud",
+  architecture: "Architecture",
+};
+---
+
+<div class="mb-16">
+  <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
+    <svg
+      class="mr-3 text-purple-400 w-8 h-8"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+      ></path>
+    </svg>
+    {content.sections.skills}
+  </h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {
+      Object.entries(skills).map(([category, items]) => (
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+          <h3 class="text-xl font-semibold text-purple-300 mb-4">
+            {categoryNames[category]}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {items.map((skill) => (
+              <span class="bg-purple-600/30 text-purple-200 px-3 py-1 rounded-full text-sm font-medium border border-purple-500/30">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

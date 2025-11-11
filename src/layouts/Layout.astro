@@ -1,0 +1,35 @@
+---
+import "@styles/global.css";
+
+interface Props {
+  title: string;
+  lang: string;
+}
+
+const { title, lang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pedro Edward Lumbre Cama - Full Stack Developer CV"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="bg-linear-to-b from-gray-900 via-black to-gray-900">
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
